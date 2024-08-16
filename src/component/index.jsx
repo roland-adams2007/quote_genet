@@ -1,6 +1,8 @@
 
 import { useState,useEffect } from "react";
 import quotes from "./quotes.json"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RandomQuote = () =>{
 
@@ -33,9 +35,14 @@ const RandomQuote = () =>{
     const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(`${quote.text} - ${quote.author}`);
-      alert("Quote copied to clipboard!");
+      toast.success("Copied to Clipboard", {
+        autoClose: 3000
+      })
     } catch (err) {
       console.error("Failed to copy text: ", err);
+      toast.error("Failed to copy text", {
+        autoClose: 3000
+      })
     }
   };
 
@@ -45,6 +52,9 @@ const RandomQuote = () =>{
                 <div className="inner_container">
                     
                     <div className="row">
+                        <div className="col">
+                            <h2>Rick & Morty Quote Generator</h2>
+                        </div>
                         <div className={`col quotes ${fadeIn ? "fade-in" : ""}`}>
                             <p>{quote.text}</p>
                         </div>
@@ -63,6 +73,10 @@ const RandomQuote = () =>{
                           <i className='bx bx-copy bx-border-circle'></i>
                         </button>
                         </div>
+                        <div className="col">
+                            <p>Created by <span>Roland Adams</span></p>
+                        </div>
+                        <ToastContainer />
                     </div>
                 </div>
           </div>

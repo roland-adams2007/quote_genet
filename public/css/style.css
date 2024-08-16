@@ -40,10 +40,14 @@ hr{
 .col{
     text-align: center;
 }
-.col p{
+
+.col p,.col h2{
     color: white;
 }
-.col:nth-child(4){
+.col p span{
+    border-bottom: 2px solid white;
+}
+.col:nth-child(5){
     display: flex;
     column-gap: 15px;
 }
@@ -63,4 +67,16 @@ hr{
 button{
  background-color: transparent;
  border: none;
+}
+
+
+/*media  query*/
+
+@media screen and  (max-width:480px) {
+
+    .row{
+        max-width: 100%;
+        margin: 0px 10px;
+    }
+    
 }
